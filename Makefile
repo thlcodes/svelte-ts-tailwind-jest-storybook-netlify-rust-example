@@ -1,4 +1,4 @@
-.PHONY: rust build
+.PHONY: rust svelte netlify vercel
 
 rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile minimal -y
@@ -9,9 +9,14 @@ rust:
 	cd rust && ${HOME}/.cargo/bin/cargo build --release --target x86_64-unknown-linux-musl && cp target/x86_64-unknown-linux-musl/release/rusttest ../functions/rusttest
 	cp functions/rusttest functions/rusttest2.go
 
-build:
+go:
 	mkdir -p functions
 	cd go && go build -o ../functions/gotest.go ./...
-	ls -al functions/
+
+svelte:
 	npm run build:svelte
 	rm -f public/_redirects
+
+netlify: go svelte
+
+vercel: svelte
