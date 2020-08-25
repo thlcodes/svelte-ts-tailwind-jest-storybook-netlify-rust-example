@@ -1,6 +1,6 @@
 /node_modules/
-/public/dist
-
+/public/dist/
+/coverage
 .DS_Store
 /coverage
 /storybook-static

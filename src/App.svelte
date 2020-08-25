@@ -4,17 +4,25 @@
 
   let goPrefix = "Go ";
   let rustPrefix = "Rust ";
+  let jsPrefix = "JS ";
+  let tsPrefix = "TS ";
 
   let goName: string;
   let rustName: string;
+  let jsName: string;
+  let tsName: string;
 
   let times = {
     go: 0,
     rust: 0,
+    js: 0,
+    ts: 0,
   };
 
   $: goName = goPrefix + times.go.toString() + "s";
   $: rustName = rustPrefix + times.rust.toString() + "s";
+  $: jsName = jsPrefix + times.js.toString() + "s";
+  $: tsName = tsPrefix + times.ts.toString() + "s";
 
   const run = async (typ: string) => {
     const start = Date.now();
@@ -57,5 +65,7 @@
   </p>
   <Button name={goName} on:click={() => run('go')} />
   <Button name={rustName} on:click={() => run('rust')} />
+  <Button name={jsName} on:click={() => run('js')} />
+  <Button name={tsName} on:click={() => run('ts')} />
 
 </main>
