@@ -2,7 +2,7 @@
 
 rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile minimal -y
-	export PATH="$HOME/.cargo/bin:$PATH"
+	export PATH="${HOME}/.cargo/bin:$PATH"
 	rustup --version
 	rustc --version
 	cargo --version
