@@ -1,0 +1,2 @@
+/api/jstest /.netlify/functions/jstest 200!
+/api/gotest/* http://localhost:8080/:splat 200!

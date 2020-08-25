@@ -4,3 +4,9 @@
   publish = "public/"
 [build.environment]
   GO_IMPORT_PATH = "test"
+
+[[redirects]]
+  from = "/api/gotest"
+  to = "/.netlify/functions/gotest"
+  status = 200
+  force = true

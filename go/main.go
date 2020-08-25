@@ -1,18 +1,26 @@
 package main
 
 import (
-	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+
+	"github.com/apex/gateway"
 )
 
-func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	return events.APIGatewayProxyResponse{
-		StatusCode: 200,
-		Body:       "Hello AWS Lambda and Netlify",
-	}, nil
+func handler(rw http.ResponseWriter, req *http.Request) {
+	log.Printf("> request %s", req.URL.Path)
+	rw.Write([]byte("Hello from GO!"))
 }
 
 func main() {
-	// Make the handler available for Remote Procedure Call by AWS Lambda
-	lambda.Start(handler)
+	fmt.Println("Starting GO Function")
+	addr := ":n/a"
+	listener := gateway.ListenAndServe
+	if _, isLambda := os.LookupEnv("_LAMBDA_SERVER_PORT"); !isLambda {
+		addr = "localhost:8080"
+		listener = http.ListenAndServe
+	}
+	listener(addr, http.HandlerFunc(handler))
 }
