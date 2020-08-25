@@ -1,10 +1,12 @@
 .PHONY: rust build
 
 rust:
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile minimal -y
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup
+	chmod +x rustup
+	rustup --profile minimal -y
+	rustup target add x86_64-unknown-linux-musl
 	${HOME}/.cargo/bin/rustc --version
 	${HOME}/.cargo/bin/cargo --version
-	rustup target add x86_64-unknown-linux-musl
 
 build:
 	cd rust && cargo build --release --target x86_64-unknown-linux-musl && cp target/release/rusttest ../functions/rusttest
