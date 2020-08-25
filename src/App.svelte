@@ -2,6 +2,27 @@
   import Button from "./components/Button.svelte";
   import "./tailwind.svelte";
 
+  let goPrefix = "Go ";
+  let rustPrefix = "Rust ";
+
+  let goName: string;
+  let rustName: string;
+
+  let times = {
+    go: 0,
+    rust: 0,
+  };
+
+  $: goName = goPrefix + times.go.toString() + "s";
+  $: rustName = rustPrefix + times.rust.toString() + "s";
+
+  const run = async (typ: string) => {
+    const start = Date.now();
+    await fetch(`/api/${typ}/test`);
+    const diff = Date.now() - start;
+    times = { ...times, [typ]: diff };
+  };
+
   export let name: string;
 </script>
 
@@ -34,7 +55,7 @@
     <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
     to learn how to build Svelte apps.
   </p>
-  <Button name="Jochen" />
-  <button id="butInstall" hidden>Install PWA</button>
+  <Button name={goName} on:click={() => run('go')} />
+  <Button name={rustName} on:click={() => run('rust')} />
 
 </main>

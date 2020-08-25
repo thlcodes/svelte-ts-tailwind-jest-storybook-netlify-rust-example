@@ -1,0 +1,13 @@
+[package]
+name = "rusttest"
+version = "2.0.0"
+authors = ["Thomas"]
+edition = "2018"
+
+[dependencies]
+http = "0.1"
+now_lambda = "*"
+
+[lib]
+name = "util"
+path = "_util.rs"

@@ -1,7 +1,9 @@
 /node_modules/
-/public/build/
+/public/dist
 
 .DS_Store
 /coverage
 /storybook-static
 /rust/target
+.vercel
+/api/rust/target
