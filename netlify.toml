@@ -1,5 +1,5 @@
 [build]
-  command = "npm build:svelte"
+  command = "npm run build:svelte"
   functions = "functions"
   publish = "public"
 [dev]
