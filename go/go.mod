@@ -1,4 +1,4 @@
-module test
+module github.com/thlcodes/bla
 
 go 1.14
 
