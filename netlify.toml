@@ -13,3 +13,9 @@
   to = "/.netlify/functions/gotest"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/api/rusttest"
+  to = "/.netlify/functions/rusttest"
+  status = 200
+  force = true
