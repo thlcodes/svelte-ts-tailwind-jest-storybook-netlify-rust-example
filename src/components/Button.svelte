@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
 
-  export let name: String;
+  export let name: String = "";
   let upperName: String;
 
   const disp = createEventDispatcher();
@@ -11,7 +11,7 @@
     console.log(e);
   }
 
-  $: upperName = (name || "BUTTON").toUpperCase();
+  $: upperName = (name || "BUTTON").toLocaleLowerCase();
 </script>
 
 <style>

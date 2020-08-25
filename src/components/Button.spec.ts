@@ -5,11 +5,11 @@ import Button from './Button.svelte'
 test('fallback text', () => {
   const { getByText } = render(Button)
 
-  expect(getByText('BUTTON')).toBeInTheDocument()
+  expect(getByText('button')).toBeInTheDocument()
 })
 
 test('text', () => {
   const { getByText } = render(Button, { name: "Peter" })
 
-  expect(getByText('PETER')).toBeInTheDocument()
+  expect(getByText('peter')).toBeInTheDocument()
 })
