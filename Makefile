@@ -1,8 +1,7 @@
 rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-	source $HOME/.cargo/env
-	rustc --version
-	cargo --version
+	$HOME/.cargo/bin/rustc --version
+	$HOME/.cargo/bin/cargo --version
 
 build:
 	rm -f public/_redirects
