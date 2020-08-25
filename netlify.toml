@@ -1,0 +1,9 @@
+[build]
+  command = "npm build:svelte"
+  functions = "functions"
+  publish = "public"
+[dev]
+  functions = "functions"
+  publish = "public"
+[build.environment]
+  GO_IMPORT_PATH = "test"

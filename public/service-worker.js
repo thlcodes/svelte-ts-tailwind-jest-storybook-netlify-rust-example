@@ -3,7 +3,10 @@ var filesToCache = [
   "/",
   "/index.html",
   "/dist/app.js",
-  "/dist/app.css"
+  "/dist/app.css",
+  "manifest.json",
+  "/scripts/install.js",
+  "favicon.png"
 ];
 self.addEventListener("install", function (e) {
   e.waitUntil(
@@ -32,4 +35,9 @@ self.addEventListener("fetch", e => {
       return response || fetch(e.request);
     })()
   );
+});
+let reg = self.registration
+self.addEventListener('push', event => {
+  console.log("push", event)
+  reg.showNotification(event.data)
 });
