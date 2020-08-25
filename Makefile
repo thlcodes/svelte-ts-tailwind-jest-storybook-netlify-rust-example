@@ -9,7 +9,7 @@ rust:
 
 build:
 	mkdir -p functions
-	cd rust && ${HOME}/.cargo/bin/cargo build --release && cp target/release/rusttest ../functions/rusttest
+	cd rust && ls -al && ${HOME}/.cargo/bin/cargo build --release && cp target/release/rusttest ../functions/rusttest
 	cp functions/rusttest functions/rusttest2.go
 	cd go && go build -o ../functions/gotest.go ./...
 	npm run build:svelte
