@@ -1,11 +1,22 @@
+import Button from "./Button.svelte";
+import { action } from "@storybook/addon-actions";
 
-import Button from './Button.svelte';
 export default {
-  title: 'Button',
-  excludeStories: /.*Data$/,
+  title: "Button",
+  argTypes: {
+    name: { control: "text" },
+  },
 };
 
-export const Default = () => ({
+export const Default = (args) => ({
   Component: Button,
-  props: {},
+  props: args,
+  on: {
+    click: action("clicked"),
+  },
 });
+
+export const WithName = Default.bind({});
+WithName.args = {
+  name: "With a name",
+};
