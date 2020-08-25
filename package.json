@@ -10,7 +10,9 @@
     "dev": "run-p watch:svelte",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "local:go": "cd go && go run .",
+    "local": "run-p start local:go"
   },
   "jest": {
     "setupFilesAfterEnv": [

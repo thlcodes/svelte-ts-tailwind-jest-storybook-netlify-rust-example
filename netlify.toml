@@ -5,6 +5,9 @@
 [build.environment]
   GO_IMPORT_PATH = "test"
 
+[dev]
+  command = "npm run local"
+
 [[redirects]]
   from = "/api/gotest"
   to = "/.netlify/functions/gotest"
