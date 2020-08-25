@@ -1,6 +1,6 @@
 <script lang="ts">
   import Button from "./components/Button.svelte";
-  import Tailwind from "./tailwind.svelte";
+  import "./tailwind.svelte";
 
   export let name: string;
 </script>
@@ -27,7 +27,6 @@
   }
 </style>
 
-<Tailwind />
 <main>
   <h1>Hi {name}!</h1>
   <p>

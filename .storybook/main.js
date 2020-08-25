@@ -1,6 +1,7 @@
 const path = require("path");
 const tailwindcss = require("tailwindcss");
 const sveltePreprocess = require("svelte-preprocess");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 async function webpackFinal(webpackConfig, options) {
   //Svelteloader
@@ -14,7 +15,7 @@ async function webpackFinal(webpackConfig, options) {
     emitCss: true,
   };
 
-  const { module: origModule = {} } = webpackConfig;
+  const { module: origModule = {}, plugins = [] } = webpackConfig;
 
   const module = {
     ...origModule,
@@ -25,11 +26,11 @@ async function webpackFinal(webpackConfig, options) {
       // TailwindCSS config
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, "../src"),
         use: [
-          {
+          MiniCssExtractPlugin.loader,
+          /*{
             loader: "style-loader",
-          },
+          },*/
           {
             loader: "css-loader",
             options: {
@@ -57,6 +58,7 @@ async function webpackFinal(webpackConfig, options) {
   return {
     ...webpackConfig,
     module,
+    plugins: [...plugins, new MiniCssExtractPlugin()]
   };
 }
 
