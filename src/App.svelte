@@ -35,6 +35,6 @@
     to learn how to build Svelte apps.
   </p>
   <Button name="Jochen" />
-  <Button />
+  <button id="butInstall" hidden>Install PWA</button>
 
 </main>
