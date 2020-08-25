@@ -5,7 +5,7 @@ rust:
 	${HOME}/.cargo/bin/rustup --version
 	${HOME}/.cargo/bin/rustc --version
 	${HOME}/.cargo/bin/cargo --version
-	rustup target add x86_64-unknown-linux-musl
+	${HOME}/.cargo/bin/rustup target add x86_64-unknown-linux-musl
 
 build:
 	mkdir -p functions
