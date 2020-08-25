@@ -1,5 +1,5 @@
 [build]
-  command = "make rust && make build"
+  command = "make build"
   functions = "functions/"
   publish = "public/"
 [build.environment]
