@@ -1,6 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
 
+  export let disabled: boolean = false;
   export let name: String = "";
   let upperName: String;
 
@@ -20,11 +21,16 @@
     font-size: 11pt;
     @apply rounded-lg;
   }
+
+  button:disabled {
+    opacity: 0.1;
+  }
 </style>
 
 <button
-  on:click={clk}
+  on:mousedown={clk}
   class="border-gray-600 border-2 px-8 py-4 text-red-400 hover:bg-pink-700 m-2
-  outline-none focus:outline-none">
+  outline-none focus:outline-none"
+  {disabled}>
   {upperName}
 </button>
