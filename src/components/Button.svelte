@@ -7,9 +7,16 @@
 
   const disp = createEventDispatcher();
 
-  function clk(e: any) {
+  let touched = false;
+
+  function touch(e: any) {
+    touched = true;
     disp("click", e);
     console.log(e);
+  }
+
+  function down(e: any) {
+    !touched && touch(e);
   }
 
   $: upperName = (name || "BUTTON").toLocaleLowerCase();
@@ -24,8 +31,11 @@
 </style>
 
 <button
-  on:touchstart={clk}
-  on:mousedown={clk}
+  on:touchstart={touch}
+  on:mouseup={() => {
+    touched = false;
+  }}
+  on:mousedown={down}
   class="border-gray-600 border-2 px-8 py-4 text-red-400 hover:bg-pink-700 m-2
   outline-none focus:outline-none"
   {disabled}>
